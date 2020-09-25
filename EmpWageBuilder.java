@@ -4,16 +4,18 @@ public class EmpWageBuilder {
 	public static final int IS_FULL_TIME = 2;
 	public static final int EMP_RATE_PER_HOUR = 20;
 	public static final int NUM_OF_WORKING_DAYS = 20;
+	public static final int MAX_HRS_IN_MONTH = 100;
 
 	public static void main(String[] args) {
 
-		int empHrs = 0;
+
 		int empWage = 0;
-		int totEmpWage = 0;
+		int totEmpWage = 0, totalWorkingDays = 0, totEmpHrs = 0;
 
-		for (int day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+		while (totEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-
+			int empHrs=0;
+			totalWorkingDays++;
 			switch (empCheck) {
 			case IS_FULL_TIME:
 				empHrs = 8;
@@ -24,6 +26,7 @@ public class EmpWageBuilder {
 			default:
 				empHrs = 0;
 			}
+			totEmpHrs+=empHrs;
 			empWage = empHrs * EMP_RATE_PER_HOUR;
 			totEmpWage += empWage;
 			System.out.println("Emp Wage=" + empWage);
