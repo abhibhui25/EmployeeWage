@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 class EmpWage {
 	public static void main(String args[]) {
@@ -6,7 +6,7 @@ class EmpWage {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the number of companies details to be added");
 		int y = sc.nextInt();
-		SampleEmp[] arr = new SampleEmp[y];
+		ArrayList<SampleEmp> arr = new ArrayList<SampleEmp>();
 		boolean j = true;
 		for (int i = 0; i < y; i++) {
 			System.out.println("Enter the name of the company:");
@@ -19,7 +19,7 @@ class EmpWage {
 			int days_per_month = sc.nextInt();
 			SampleEmp e = new SampleEmp(n, wage_per_day, days_per_month, hrs_per_month);
 			e.Calculate();
-			arr[i] = e;
+			arr.add(e);
 		}
 		while (j) {
 			System.out.println("Do you want to access company details(Y/N)");
@@ -31,9 +31,9 @@ class EmpWage {
 			System.out.println("Enter company name to access its details");
 			String s = sc.next();
 			int key = 0;
-			for (int i = 0; i < arr.length; i++) {
-				if (arr[i].name.equalsIgnoreCase(s)) {
-					System.out.println("WAGE=" + arr[i].wage);
+			for (int i = 0; i < arr.size(); i++) {
+				if (arr.get(i).name.equalsIgnoreCase(s)) {
+					System.out.println("WAGE=" + arr.get(i).wage);
 					key = 1;
 					break;
 				}
