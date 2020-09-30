@@ -27,20 +27,25 @@ class EmpWage {
 			if (acc.equalsIgnoreCase("N")) {
 				j = false;
 				break;
+			} else {
+				System.out.println("Enter company name to access its details");
+				String s = sc.next();
+				checkDetails(arr, s);
 			}
-			System.out.println("Enter company name to access its details");
-			String s = sc.next();
-			int key = 0;
-			for (int i = 0; i < arr.size(); i++) {
-				if (arr.get(i).name.equalsIgnoreCase(s)) {
-					System.out.println("WAGE=" + arr.get(i).wage);
-					key = 1;
-					break;
-				}
+		}
+	}
+
+	public static void checkDetails(ArrayList<SampleEmp> arr, String s) {
+		int key = 0;
+		for (int i = 0; i < arr.size(); i++) {
+			if (arr.get(i).name.equalsIgnoreCase(s)) {
+				System.out.println("TOTAL WAGE=" + arr.get(i).wage);
+				key = 1;
+				break;
 			}
-			if (key == 0) {
-				System.out.println("Company details not found");
-			}
+		}
+		if (key == 0) {
+			System.out.println("Company details not found");
 		}
 	}
 }
@@ -83,7 +88,7 @@ class SampleEmp implements Calculation {
 				}
 			}
 			this.wage = wage;
-			System.out.println("Daily Wage="+w);
+			System.out.println("Daily Wage=" + w);
 			System.out.println("Wage per month " + wage);
 		}
 	}
