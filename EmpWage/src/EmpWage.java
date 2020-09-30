@@ -6,6 +6,8 @@ class EmpWage {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the number of companies details to be added");
 		int y = sc.nextInt();
+		SampleEmp[] arr = new SampleEmp[y];
+		boolean j = true;
 		for (int i = 0; i < y; i++) {
 			System.out.println("Enter the name of the company:");
 			String n = sc.next();
@@ -17,6 +19,28 @@ class EmpWage {
 			int days_per_month = sc.nextInt();
 			SampleEmp e = new SampleEmp(n, wage_per_day, days_per_month, hrs_per_month);
 			e.Calculate();
+			arr[i] = e;
+		}
+		while (j) {
+			System.out.println("Do you want to access company details(Y/N)");
+			String acc = sc.next();
+			if (acc.equalsIgnoreCase("N")) {
+				j = false;
+				break;
+			}
+			System.out.println("Enter company name to access its details");
+			String s = sc.next();
+			int key = 0;
+			for (int i = 0; i < arr.length; i++) {
+				if (arr[i].name.equalsIgnoreCase(s)) {
+					System.out.println("WAGE=" + arr[i].wage);
+					key = 1;
+					break;
+				}
+			}
+			if (key == 0) {
+				System.out.println("Company details not found");
+			}
 		}
 	}
 }
@@ -59,7 +83,7 @@ class SampleEmp {
 				}
 			}
 			this.wage = wage;
-			System.out.println("Wage per month " + "for company " + name + ":" + wage);
+			System.out.println("Wage per month " + wage);
 		}
 	}
 }
