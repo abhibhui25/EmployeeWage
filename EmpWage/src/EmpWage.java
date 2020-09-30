@@ -45,7 +45,7 @@ class EmpWage {
 	}
 }
 
-class SampleEmp {
+class SampleEmp implements Calculation {
 	int w = 0;
 	int h = 0;
 	int d = 0;
@@ -60,7 +60,7 @@ class SampleEmp {
 
 	}
 
-	void Calculate() {
+	public void Calculate() {
 		int wage = 0;
 		int hours = 0;
 		int days = 0;
@@ -86,4 +86,8 @@ class SampleEmp {
 			System.out.println("Wage per month " + wage);
 		}
 	}
+}
+
+interface Calculation {
+	void Calculate();
 }
